@@ -1,0 +1,30 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+
+<polymer-element name="palindrome-check" attributes="possiblePalindrome reverse">
+    <template>
+        <div id="divPalindrome"> </div>
+    </template>
+
+    <script>
+        Polymer({
+
+            ready: function() {
+
+                possiblePalindrome = this.innerHTML;
+                reverse = possiblePalindrome.split("").reverse().join("");
+
+                this.textContent = reverse;
+
+                if (possiblePalindrome === reverse ) {
+                    console.log("palindrome");
+                    this.style.backgroundColor = "#00ff00";
+                } else {
+                    console.log("kein palindrome");
+                    this.style.backgroundColor = "#ff0000";
+
+                }
+            }
+        });
+    </script>
+
+</polymer-element>

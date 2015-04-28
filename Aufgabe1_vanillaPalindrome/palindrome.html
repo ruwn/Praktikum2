@@ -1,0 +1,25 @@
+<script>
+
+    var thatDoc = document;
+    var thisDoc = (thatDoc._currentScript || thatDoc.currentScript).ownerDocument;
+
+    var palindromeCheckProto = Object.create(HTMLElement.prototype);
+
+    palindromeCheckProto.createdCallback = function() {
+        var possiblePalindrome = this.innerHTML;
+        console.log(possiblePalindrome.toString());
+
+        if (possiblePalindrome.split("").reverse().join("") === possiblePalindrome) {
+            this.style.backgroundColor = "#00ff00";
+            console.log("Palindrom");
+        } else {
+            this.style.backgroundColor = "#f00";
+            console.log("kein Palindrom");
+
+        }
+
+        this.innerHTML = possiblePalindrome.split("").reverse().join("");
+    }
+
+    var palindromeCheck = thisDoc.registerElement('palindrome-check', {prototype: palindromeCheckProto});
+</script>
